@@ -1,7 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import './App.css';
 import Typed from 'typed.js';
 import emailjs from '@emailjs/browser';
+import Particles from "react-tsparticles";
+import { loadFull } from 'tsparticles';
 function App() {
   const [isInter, setIsInter] = useState(false);
   const [isInterSec, setIsInterSec] = useState(false);
@@ -25,6 +27,10 @@ function App() {
       });
   };
  
+  const loadParticles = async function (main) {
+    await loadFull(main)
+   }
+
   useEffect(() => {
     const elemento = formInter.current;
     const observer = new IntersectionObserver((entries) => {
@@ -97,13 +103,96 @@ function App() {
       typed.destroy();
     };
   }, []);
-   
+
+    
+
   return (
     <div>
+      <Particles
+      id="tsparticles"
+      init={loadParticles}
+      options={{
+        fullScreen:{
+          zIndex: -1
+        },
+        background: {
+            color: {
+                value: "",
+            },
+        },
+        fpsLimit: 120,
+        interactivity: {
+            events: {
+                onClick: {
+                    enable: true,
+                    mode: "push",
+                },
+                onHover: {
+                    enable: true,
+                    mode: "repulse",
+                },
+                resize: true,
+            },
+            modes: {
+                push: {
+                    quantity: 3,
+                },
+                repulse: {
+                    distance: 200,
+                    duration: 0.4,
+                },
+            },
+        },
+        particles: {
+            color: {
+                value: "#ffffff",
+            },
+            links: {
+                color: "#ffffff",
+                distance: 150,
+                enable: false,
+                opacity: 0.5,
+                width: 1,
+            },
+            move: {
+              gravity:{
+                acceleration: 1,
+                enable: true
+              },
+
+                direction: "none",
+                enable: true,
+                outModes: {
+                    default: "bounce",
+                },
+                random: false,
+                speed: 1,
+                straight: false,
+            },
+            number: {
+                density: {
+                    enable: true,
+                    area: 800,
+                },
+                value: 90,
+            },
+            opacity: {
+                value: 0.5,
+            },
+            shape: {
+                type: "circle",
+            },
+            size: {
+                value: { min: 1, max: 5 },
+            },
+        },
+        detectRetina: true,
+    }}
+      />
       <div className="w-100vw bg-fixed" style={{ backgroundImage: `url('https://a-static.besthdwallpaper.com/lofi-chill-bedroom-wallpaper-2800x1050-85077_88.jpg')` }}>
         <div className="flex items-center justify-center w-screen h-screen">
           <div className="text-8xl text-center flex items-center justify-center">
-            <span className="text-black">Hola! Soy </span>
+            <span className="text-white">Hola! Soy </span>
             <h1 ref={el} className="text-amber-400"></h1>
           </div>
           {/* Barra de navegación dentro del mismo div */}
