@@ -1,0 +1,12 @@
+body{
+ height: 300vh;
+ font-family: 'Dela Gothic One', cursive;
+ overflow-x: hidden;
+ background-color: #070A19;
+ color: #b7b7c0;
+}
+.typed{
+    flex-direction: row;
+    flex: content;
+    justify-content: center;
+}
