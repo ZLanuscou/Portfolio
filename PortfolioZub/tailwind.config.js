@@ -7,26 +7,23 @@ export default {
   theme: {
     extend: {
       keyframes: {
-        'slide-down': {
-          '0%': {
-            transform: 'translateY(-100%)'
+        // Define una animación para cambiar gradualmente el color del texto
+        'color-change': {
+          
+          '25%': {
+            color: '#FFA500', // Color a los 25% de la animación (naranja)
           },
-          '100%': {
-            transform: 'translateY(0)',
-          }
+          '50%': {
+            color: '#FFFF00', // Color a los 50% de la animación (amarillo)
+          },
+          '75%': {
+            color: '#008000', // Color a los 75% de la animación (verde)
+          },
+        
         },
-        'slide-right': {
-          '0%': {
-            transform: 'translateX(-100%)' // Empieza fuera de la pantalla hacia la izquierda
-          },
-          '100%': {
-            transform: 'translateX(0)', // Termina en su posición original
-          }
-        }
       },
       animation: {
-        'slide-down': 'slide-down 1s ease-in-out',
-        'slide-right': 'slide-right 5s linear' // Agrega la animación de desplazamiento hacia la derecha
+        'color-change': 'color-change 5s linear infinite'
       }
     },
   },
